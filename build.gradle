@@ -1,11 +1,10 @@
 buildscript {
     repositories {
         maven { url = "https://files.minecraftforge.net/maven" }
-        jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "3.+", changing: true
+        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "4.1.+", changing: true
     }
 }
 
@@ -14,7 +13,7 @@ apply plugin: "eclipse"
 apply plugin: "maven-publish"
 
 version = "${project.minecraft}-${project.modVersion}"
-group = "com.minecraftabnormals"
+group = "com.teamabnormals"
 archivesBaseName = project.modId
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = "1.8"
@@ -49,7 +48,8 @@ minecraft {
             workingDirectory project.file("run")
             property "forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP"
             property "forge.logging.console.level", "debug"
-            args "--mod", "template_mod", "--all", "--output", file("src/generated/resources/")
+            property "mixin.env.disableRefMap", "true"
+            args "--mod", project.modId, "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources")
             mods {
                 template_mod {
                     source sourceSets.main
@@ -59,15 +59,27 @@ minecraft {
     }
 }
 
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
+
 dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraft}-${project.forge}"
-    implementation fg.deobf("curse.maven:abnormals_core-382216:${project.abnormalsCore}")
-    implementation fg.deobf("curse.maven:jei-238222:3109181")
+    implementation fg.deobf("com.minecraftabnormals:abnormals-core:${project.minecraft}-${project.abnormalsCore}")
+
+    compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}:${project.jei}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${project.minecraft}:${project.jei}")
 }
 
 repositories {
     maven {
-        url "https://www.cursemaven.com"
+        url "https://maven.jaackson.me"
+    }
+    maven {
+        url "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        url "https://modmaven.k-4u.nl"
     }
 }
 

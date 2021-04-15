@@ -1,7 +1,7 @@
-package com.minecraftabnormals.template_mod.core.registry;
+package com.teamabnormals.template_mod.core.registry;
 
 import com.minecraftabnormals.abnormals_core.core.util.registry.BlockSubRegistryHelper;
-import com.minecraftabnormals.template_mod.core.TemplateMod;
+import com.teamabnormals.template_mod.core.TemplateMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;

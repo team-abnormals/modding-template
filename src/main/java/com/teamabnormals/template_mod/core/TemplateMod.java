@@ -1,13 +1,12 @@
-package com.minecraftabnormals.template_mod.core;
+package com.teamabnormals.template_mod.core;
 
 import com.minecraftabnormals.abnormals_core.core.util.registry.RegistryHelper;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(TemplateMod.MOD_ID)
@@ -22,9 +21,8 @@ public class TemplateMod {
 		MinecraftForge.EVENT_BUS.register(this);
 
 		bus.addListener(this::commonSetup);
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-			bus.addListener(this::clientSetup);
-		});
+		bus.addListener(this::clientSetup);
+		bus.addListener(this::dataSetup);
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
@@ -37,5 +35,9 @@ public class TemplateMod {
 		event.enqueueWork(() -> {
 
 		});
+	}
+
+	private void dataSetup(GatherDataEvent event) {
+
 	}
 }
