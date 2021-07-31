@@ -8,8 +8,10 @@ license = "https://github.com/team-abnormals/template-mod/blob/main/LICENSE.txt"
     version = "${file.jarVersion}"
     logoFile = "logo.png"
     itemIcon = "minecraft:dirt"
+    configBackground = "minecraft:textures/block/dirt.png"
     authors = "Team Abnormals"
     credits = "bageldotjpg"
+    displayURL = "https://www.teamabnormals.com/mods/template-mod"
     displayName = "Template Mod"
     description = '''
     Template description.
@@ -25,13 +27,13 @@ license = "https://github.com/team-abnormals/template-mod/blob/main/LICENSE.txt"
 [[dependencies.template_mod]]
     modId = "forge"
     mandatory = true
-    versionRange = "[36.1.0,)"
+    versionRange = "[36.2.0,)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.template_mod]]
     modId = "abnormals_core"
     mandatory = true
-    versionRange = "[3.1.1,)"
+    versionRange = "[3.2.0,)"
     ordering = "AFTER"
     side = "BOTH"

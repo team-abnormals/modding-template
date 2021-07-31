@@ -11,5 +11,5 @@ import net.minecraftforge.fml.common.Mod;
 public class TemplateItems {
 	public static final ItemSubRegistryHelper HELPER = TemplateMod.REGISTRY_HELPER.getItemSubHelper();
 
-	public static final RegistryObject<Item> TEMPLATE_ITEM = HELPER.createItem("template_item", () -> new Item(new Item.Properties().group(ItemGroup.FOOD)));
+	public static final RegistryObject<Item> TEMPLATE_ITEM = HELPER.createItem("template_item", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_FOOD)));
 }

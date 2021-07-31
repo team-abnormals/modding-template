@@ -12,5 +12,5 @@ import net.minecraftforge.fml.common.Mod;
 public class TemplateBlocks {
 	public static final BlockSubRegistryHelper HELPER = TemplateMod.REGISTRY_HELPER.getBlockSubHelper();
 
-	public static final RegistryObject<Block> TEMPLATE_BLOCK = HELPER.createBlock("template_block", () -> new Block(Block.Properties.from(Blocks.STONE)), ItemGroup.BUILDING_BLOCKS);
+	public static final RegistryObject<Block> TEMPLATE_BLOCK = HELPER.createBlock("template_block", () -> new Block(Block.Properties.copy(Blocks.STONE)), ItemGroup.TAB_BUILDING_BLOCKS);
 }
