@@ -20,20 +20,20 @@ license = "https://github.com/team-abnormals/template-mod/blob/main/LICENSE.txt"
 [[dependencies.template_mod]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.17.1,)"
+    versionRange = "[1.16.5,1.17)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.template_mod]]
     modId = "forge"
     mandatory = true
-    versionRange = "[37.0.78,)"
+    versionRange = "[36.2.0,)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.template_mod]]
-    modId = "blueprint"
+    modId = "abnormals_core"
     mandatory = true
-    versionRange = "[4.0.1,)"
+    versionRange = "[3.2.0,)"
     ordering = "AFTER"
     side = "BOTH"
