@@ -1,15 +1,22 @@
 buildscript {
     repositories {
         maven { url = "https://files.minecraftforge.net/maven" }
+        maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
     }
     dependencies {
         classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
+        classpath group: "org.spongepowered", name: "mixingradle", version: "0.7-SNAPSHOT"
     }
 }
 
 apply plugin: "net.minecraftforge.gradle"
 apply plugin: "eclipse"
 apply plugin: "maven-publish"
+apply plugin: "org.spongepowered.mixin"
+
+mixin {
+    add sourceSets.main, "${project.modId}.refmap.json"
+}
 
 version = "${project.minecraft}-${project.modVersion}"
 group = "com.teamabnormals"
@@ -69,8 +76,8 @@ dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraft}-${project.forge}"
     implementation fg.deobf("com.teamabnormals:blueprint:${project.minecraft}-${project.blueprint}")
 
-    compileOnly fg.deobf("mezz.jei:jei-1.18:${project.jei}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18:${project.jei}")
+    compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}:${project.jei}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${project.minecraft}:${project.jei}")
 }
 
 repositories {
